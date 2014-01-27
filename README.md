@@ -109,6 +109,21 @@ Finally, to completely wipe the virtual machine from the disk **destroying all i
 
 Please check the [Vagrant documentation](http://docs.vagrantup.com/v2/) for more information on Vagrant.
 
+## Faster Rails test suites
+
+If you're using Mac OS X or Linux you can increase the speed of Rails test suites with Vagrant's NFS synced folders.
+
+With a NFS server installed (already installed on Mac OS X), add the following to the Vagrantfile:
+
+    config.vm.synced_folder ".", "/vagrant", type: "nfs"
+    config.vm.network "private_network", ip: "192.168.50.4" # ensure this is available
+
+Then
+
+    host $ vagrant up # or vagrant reload
+
+Please check the [NFS synced folders documentation](http://docs.vagrantup.com/v2/synced-folders/nfs.html) for more information on Vagrant NFS synced folders.
+
 ## License
 
 Released under the MIT License, Copyright (c) 2012–<i>ω</i> Xavier Noria.
