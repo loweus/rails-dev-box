@@ -144,3 +144,9 @@ exec { "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'":
   creates => "${home}/.rvm/bin/bundle",
   require => Exec['install_ruby']
 }
+
+file {
+  "/home/vagrant/.bash_profile":
+  source => "/vagrant/puppet/files/bash_profile",
+  owner => "vagrant", group => "vagrant", mode => 0664;
+}
